@@ -214,6 +214,37 @@ Conclusion : When it receives an action, it passes it to the store via dispatch,
 
 ## Redux Study - Day 3
 
+### Subscibe
+
 Today's : Whenever the state value changes, the UI should change, so we need to call render to change the UI.
+
+- Sign up render for a subscription
+
+- Call red() every time the state changes
+
+```html
+store.subscribe(red);
+```
+
+---
+
+### No Redux
+
+- They are strongly coupled to each other.
+- Dependencies
+
+Each component sets up changes to the other components, so if one component is removed or added, all code must be modified.
+
+### Redux
+
+- Centralized management through a "relay" called Redux
+
+- Each component uses a
+
+1. when the state changes, dispatch an (action) to the store indicating that the state has changed.
+2. code how they should change accordingly and subscribe to the store.
+   > Get notified whenever the state changes -> Can make UI changes whenever the state changes
+
+Each component doesn't need to care about the others. It only needs to care about itself.
 
 Conclusion : Using Subscribe, whenever the state changes, render is notified of the change and gets the new state value to change the UI.
