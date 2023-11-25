@@ -248,3 +248,13 @@ Each component sets up changes to the other components, so if one component is r
 Each component doesn't need to care about the others. It only needs to care about itself.
 
 Conclusion : Using Subscribe, whenever the state changes, render is notified of the change and gets the new state value to change the UI.
+
+### Extra - Redux(Time Traveling)
+
+Chrome - add 'Redux Dev Tools' extension - add 'window.**REDUX_DEVTOOLS_EXTENSION** &&
+window.**REDUX_DEVTOOLS_EXTENSION**()' to stroe
+
+```html
+var store = Redux.createStore( reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &&
+window.__REDUX_DEVTOOLS_EXTENSION__());
+```
