@@ -207,3 +207,13 @@ return newState; }
 ```html
 Object.assign({}, state, { color: "red" });
 ```
+
+Conclusion : When it receives an action, it passes it to the store via dispatch, and the store calls the reducer to change the state value.
+
+---
+
+## Redux Study - Day 3
+
+Today's : Whenever the state value changes, the UI should change, so we need to call render to change the UI.
+
+Conclusion : Using Subscribe, whenever the state changes, render is notified of the change and gets the new state value to change the UI.
