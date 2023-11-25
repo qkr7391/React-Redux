@@ -258,3 +258,11 @@ window.**REDUX_DEVTOOLS_EXTENSION**()' to stroe
 var store = Redux.createStore( reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &&
 window.__REDUX_DEVTOOLS_EXTENSION__());
 ```
+
+'Immutability' : Why the original's state value should never be changed directly.
+
+Redux
+
+- Keep all the state you need to manage in a store
+- Single store (keep only one store)
+- The store is processed by the reducer.
