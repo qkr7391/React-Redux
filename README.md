@@ -266,3 +266,9 @@ Redux
 - Keep all the state you need to manage in a store
 - Single store (keep only one store)
 - The store is processed by the reducer.
+
+---
+
+## Redux Study - Day 4
+
+### Prectice - Static Web page
