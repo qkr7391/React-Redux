@@ -587,3 +587,11 @@ else if (action.type === "CREATE") {
 ```JavaScript
 store.subscribe(TOC);
 ```
+
+---
+
+## Redux Study - Day 8
+
+### Practice - Static Web page #5
+
+Implementing delete functionality
