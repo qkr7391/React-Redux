@@ -267,35 +267,33 @@ Redux
 - Single store (keep only one store)
 - The store is processed by the reducer.
 
----
-
 ## Redux Study - Day 4
 
-### Prectice - Static Web page #1
+### Practice - Static Web page #1
 
 simple setting
 
-```html
+```HTML
 <body>
-	<header>
-		<h1>WEB</h1>
-		Hello, WEB!
-	</header>
-	<nav>
-		<ol>
-			<li><a href="1.html">HTML</a></li>
-			<li><a href="2.html">CSS</a></li>
-		</ol>
-	</nav>
-	<article>
-		<ul>
-			<li><a href="/creat">create</a></li>
-			<li><input type="button" value="delete" /></li>
-		</ul>
+<header>
+<h1>WEB</h1>
+Hello, WEB!
+</header>
+<nav>
+<ol>
+<li><a href="1.html">HTML</a></li>
+<li><a href="2.html">CSS</a></li>
+</ol>
+</nav>
+<article>
+<ul>
+<li><a href="/creat">create</a></li>
+<li><input type="button" value="delete" /></li>
+</ul>
 
-		<h2>HTML</h2>
-		HTML is ...
-	</article>
+<h2>HTML</h2>
+HTML is ...
+</article>
 </body>
 ```
 
@@ -303,76 +301,76 @@ What if you had 100 million lines of code in each section? If you had all your c
 
 1. #subject
 
-```html
+```HTML
 <div id="subject"></div>
 <script>
-	function subject() {
-		document.querySelector("#subject").innerHTML = `
-	               <header>
-			        <h1>WEB</h1>
-			        Hello, WEB!
-		        </header>
-	               `;
-	}
+function subject() {
+document.querySelector("#subject").innerHTML = `
+<header>
+<h1>WEB</h1>
+Hello, WEB!
+</header>
+`;
+}
 
-	...
+...
 
-	subject();
-	...
+subject();
+...
 </script>
 ```
 
 2. #TOC
 
-```html
+```HTML
 <script>
-		...
-	function TOC() { document.querySelector("#toc").innerHTML = `
-		<nav>
-			<ol>
-				<li><a href="1.html">HTML</a></li>
-				<li><a href="2.html">CSS</a></li>
-			</ol>
-		</nav>
-	`; }
-		...
-	 	TOC();
+...
+function TOC() { document.querySelector("#toc").innerHTML = `
+<nav>
+<ol>
+<li><a href="1.html">HTML</a></li>
+<li><a href="2.html">CSS</a></li>
+</ol>
+</nav>
+`; }
+...
+TOC();
 </script>
 ```
 
 3. #control
 
-```html
+```HTML
 <script>
-		...
-	function control() {
-		document.querySelector("#control").innerHTML = `
-		<ul>
-			<li><a href="/creat">create</a></li>
-			<li><input type="button" value="delete" /></li>
-		</ul>
-		`;
-	}
-		...
-	 	control();
+...
+function control() {
+document.querySelector("#control").innerHTML = `
+<ul>
+<li><a href="/creat">create</a></li>
+<li><input type="button" value="delete" /></li>
+</ul>
+`;
+}
+...
+control();
 </script>
 ```
 
 4. #content
 
-```html
+```HTML
 <script>
-		...
-	function content() {
-		document.querySelector("#content").innerHTML = `
-		<article>
-			<h2>HTML</h2>
-			HTML is ...
-		</article>
-		`;
-	}
-		...
-	 	content();
+...
+function content() {
+document.querySelector("#content").innerHTML = `
+<article>
+<h2>HTML</h2>
+HTML is ...
+</article>
+`;
+}
+...
+content();
 </script>
 ```
 
