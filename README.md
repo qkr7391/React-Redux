@@ -273,7 +273,7 @@ Redux
 
 ### Prectice - Static Web page #1
 
-simple stting
+simple setting
 
 ```html
 <body>
