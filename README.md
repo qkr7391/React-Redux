@@ -4,4 +4,4 @@ Use Redux to create a simple webpage that shows the contents of each piece of co
 
 ![Alt text](<Screenshot 2023-11-27 at 2.51.31 PM.png>)
 
-Youtube:
+Youtube: https://youtu.be/rp818HjNMuw
