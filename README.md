@@ -502,7 +502,7 @@ Change the state value for store
 
 ## Redux Study - Day 7
 
-### Practice - Static Web page #3
+### Practice - Static Web page #4
 
 Change contents according to state.id value
 
@@ -526,4 +526,64 @@ function content() {
 			</article>
 		`;
 }
+```
+
+**_ When selected_id === null (init), contents will be none. _**
+
+Give action when click create
+
+1. Make mode attribute to state object for distinguish mode
+
+```JavaScript
+if (state === undefined) {
+	return {
+		mode: "create",
+		selected_id: null,
+		contents: [
+			{ id: 1, title: "HTML", desc: "HTML is..." },
+			{ id: 2, title: "CSS", desc: "CSS is..." },
+		],
+	};
+}
+```
+
+2. Distinguish depends on mode after getState();
+
+3. dispatch(action) to store
+
+```HTML
+<form onsubmit="event.preventDefault();
+var _title = this.title.value;
+var _desc = this.desc.value;
+store.dispatch({type:'CREATE', title:_title, desc: _desc})
+">
+```
+
+4. distinguish action
+
+```JavaScript
+var newState;
+if (action.type === "SELECT") {
+	newState = Object.assign({}, state, { selected_id: action.id });
+}
+else if (action.type === "CREATE") {
+	var newMaxId = state.max_id + 1;
+	var newContents = state.contents.concat();
+	newContents.push({
+		id: newMaxId,
+		title: action.title,
+		desc: action.desc,
+	});
+	newState = Object.assign({}, state, {
+		max_id: newMaxId,
+		contents: newContents,
+		mode: "read",
+	});
+}
+```
+
+5. Give Subscribe to TOC and adding new contents on the list
+
+```JavaScript
+store.subscribe(TOC);
 ```
