@@ -1,4 +1,9 @@
 # Simple Redux Web Page
+--------
+Using:
+* HTML
+* Redux
+* JavaScript
 
 Use Redux to create a simple webpage that shows the contents of each piece of content, allows you to register new content, and delete any content you want
 
