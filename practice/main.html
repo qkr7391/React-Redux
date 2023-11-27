@@ -72,6 +72,7 @@
 				console.log(state, action);
 				if (state === undefined) {
 					return {
+						selected_id: null,
 						contents: [
 							{ id: 1, title: "HTML", desc: "HTML is..." },
 							{ id: 2, title: "CSS", desc: "CSS is..." },
@@ -80,8 +81,10 @@
 				}
 				var newState;
 				if (action.type === "SELECT") {
-					newState = Object.assign({}, state);
+					newState = Object.assign({}, state, { selected_id: action.id });
 				}
+				console.log(action, state, newState);
+				return newState;
 			}
 			var store = Redux.createStore(reducer);
 
