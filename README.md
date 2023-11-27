@@ -500,7 +500,7 @@ Change the state value for store
 
 ---
 
-## Redux Study - Day 6
+## Redux Study - Day 7
 
 ### Practice - Static Web page #3
 
