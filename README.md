@@ -530,9 +530,9 @@ function content() {
 
 **_ When selected_id === null (init), contents will be none. _**
 
-Give action when click create
+Give action when clicking create
 
-1. Make mode attribute to state object for distinguish mode
+1. Make mode attribute to state object to distinguish mode
 
 ```JavaScript
 if (state === undefined) {
@@ -582,7 +582,7 @@ else if (action.type === "CREATE") {
 }
 ```
 
-5. Give Subscribe to TOC and adding new contents on the list
+5. Give Subscribe to TOC and add new contents to the list
 
 ```JavaScript
 store.subscribe(TOC);
