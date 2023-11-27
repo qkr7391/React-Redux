@@ -440,3 +440,17 @@ function TOC() {
 ```
 
 > Each component fetches a state value from the store and generates HTML code based on that state value, allowing you to create web pages that are generated based on that state.
+
+---
+
+## Redux Study - Day 6
+
+### Practice - Static Web page #3
+
+Change the state value for store
+
+1. generate an action
+2. the action executes the reducer via dispatch
+3. the reducer produces a new value for the state
+4. when the state value changes, call the subscribed functions
+5. update the UI
