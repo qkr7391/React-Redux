@@ -1,4 +1,4 @@
-# Simple Redux Web Page
+# 1. Simple Redux Web Page
 --------
 Using:
 * HTML
