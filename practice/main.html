@@ -60,11 +60,22 @@
 			}
 
 			function content() {
+				var state = store.getState();
+				var i = 0;
+				var aTitle, aDesc;
+				while (i < state.contents.length) {
+					if (state.contents[i].id === state.selected_id) {
+						aTitle = state.contents[i].title;
+						aDesc = state.contents[i].desc;
+						break;
+					}
+					i++;
+				}
 				document.querySelector("#content").innerHTML = `
-			                 <article>
-			                     <h2>HTML</h2>
-			                     HTML is ...
-			                 </article>
+						<article>
+							<h2>${aTitle}</h2>
+							${aDesc}
+						</article>
 			       `;
 			}
 

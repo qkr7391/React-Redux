@@ -505,3 +505,25 @@ Change the state value for store
 ### Practice - Static Web page #3
 
 Change contents according to state.id value
+
+```JavaScript
+function content() {
+	var state = store.getState();
+	var i = 0;
+	var aTitle, aDesc;
+	while (i < state.contents.length) {
+		if (state.contents[i].id === state.selected_id) {
+			aTitle = state.contents[i].title;
+			aDesc = state.contents[i].desc;
+			break;
+		}
+		i++;
+	}
+	document.querySelector("#content").innerHTML = `
+			<article>
+				<h2>${aTitle}</h2>
+				${aDesc}
+			</article>
+		`;
+}
+```
