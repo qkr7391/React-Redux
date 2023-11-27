@@ -485,6 +485,13 @@ Change the state value for store
    ```
 
 3. the reducer produces a new value for the state
+   ```JavaSCript
+   var newState;
+   			if (action.type === "SELECT") {
+   				newState = Object.assign({}, state, { selected_id: action.id });
+   			}
+   			return newState;
+   ```
 4. when the state value changes, call the subscribed functions
 5. update the UI
 
