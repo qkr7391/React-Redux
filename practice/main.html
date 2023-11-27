@@ -64,6 +64,10 @@
 				var i = 0;
 				var aTitle, aDesc;
 				while (i < state.contents.length) {
+					if (state.selected_id === null) {
+						aTitle = "";
+						aDesc = "";
+					}
 					if (state.contents[i].id === state.selected_id) {
 						aTitle = state.contents[i].title;
 						aDesc = state.contents[i].desc;
@@ -98,6 +102,7 @@
 				return newState;
 			}
 			var store = Redux.createStore(reducer);
+			store.subscribe(content);
 
 			subject();
 			TOC();
