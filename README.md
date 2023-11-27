@@ -394,8 +394,7 @@ To take advantage of redundancy
 
    2.2 As the initial value, you can set the value that the application will need for the first time.
 
-```HTML
-<script>
+```JavaScript
 	function reducer(state, action) {
 		if (state === undefined) {
 			return {contents:[
@@ -407,7 +406,6 @@ To take advantage of redundancy
 	}
 
 	var store = Redux.createStore(reducer);
-</script>
 ```
 
 ![Alt text](<Screenshot 2023-11-27 at 12.13.49 AM.png>)
@@ -418,8 +416,7 @@ EX)) TOC();
 
 Takes a status value and creates as many <li> tags as there are contents in the status value.
 
-```HTML
-<script>
+```JavaScript
 function TOC() {
 				var state = store.getState();
 				var i = 0;
@@ -436,7 +433,6 @@ function TOC() {
 			             </nav>
 			             `;
 			}
-</script>
 ```
 
 > Each component fetches a state value from the store and generates HTML code based on that state value, allowing you to create web pages that are generated based on that state.
@@ -450,7 +446,46 @@ function TOC() {
 Change the state value for store
 
 1. generate an action
+   1.1 Prevent move <a> tag
+
+   ```HTML
+   <a onclick = "event.preventDefault();"
+   						href="${state.contents[i].id}">
+   						${state.contents[i].title}
+   						</a>
+   ```
+
+   1.2 Make an action
+   **_(The required properties in an action are of type)_**
+
+   ```JavaScript
+   var action = {type:'SELECT', id:${state.contents[i].id}}
+   ```
+
+   1.3 Give actions to your store's dispatches --> store calls reducer
+
+   ```JavaScript
+   store.dispatch(action);
+   ```
+
 2. the action executes the reducer via dispatch
+
+   2.1 Assign a new value to a new object when the action value in the reducer is 'SELECT'
+
+   ```JavaScript
+   var newState;
+   ```
+
+   2.2 State values should always be returned as cloned values
+
+   ```JavaScript
+   if (action.type === "SELECT") {
+   				newState = Object.assign({}, state);
+   			}
+   ```
+
 3. the reducer produces a new value for the state
 4. when the state value changes, call the subscribed functions
 5. update the UI
+
+---

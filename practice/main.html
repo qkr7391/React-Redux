@@ -32,7 +32,14 @@
 				var liTags = "";
 				while (i < state.contents.length) {
 					liTags += `
-					<li><a href="${state.contents[i].id}">${state.contents[i].title}</a></li>
+					<li><a onclick = "event.preventDefault();
+						var action = {type:'SELECT', id:${state.contents[i].id}}
+						store.dispatch(action);
+						"
+						href="${state.contents[i].id}">
+						${state.contents[i].title}
+						</a>
+					</li>
 					`;
 					i++;
 				}
@@ -62,6 +69,7 @@
 			}
 
 			function reducer(state, action) {
+				console.log(state, action);
 				if (state === undefined) {
 					return {
 						contents: [
@@ -70,7 +78,10 @@
 						],
 					};
 				}
-				return;
+				var newState;
+				if (action.type === "SELECT") {
+					newState = Object.assign({}, state);
+				}
 			}
 			var store = Redux.createStore(reducer);
 
