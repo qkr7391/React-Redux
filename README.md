@@ -485,6 +485,7 @@ Change the state value for store
    ```
 
 3. the reducer produces a new value for the state
+
    ```JavaSCript
    var newState;
    			if (action.type === "SELECT") {
@@ -492,7 +493,15 @@ Change the state value for store
    			}
    			return newState;
    ```
+
 4. when the state value changes, call the subscribed functions
+
 5. update the UI
 
 ---
+
+## Redux Study - Day 6
+
+### Practice - Static Web page #3
+
+Change contents according to state.id value
