@@ -595,3 +595,41 @@ store.subscribe(TOC);
 ### Practice - Static Web page #5
 
 Implementing delete functionality
+
+1. Create new action 'DELETE'
+
+```HTML
+<li><input onclick = "store.dispatch({type:'DELETE'})"
+type="button" value="delete" /></li>
+```
+
+```JavaScript
+else if (action.type === "DELETE") {
+	var newContents = [];
+	var i = 0;
+	while (i < state.cntents.length) {
+		if (state.selected_id !== state.contents[i].id) {
+			newContents.push(state.contents[i]);
+			break;
+		}
+	}
+	i++;
+	newState = Object.assign({}, state, {
+		contents: newContents,
+		mode: "delete",
+	});
+}
+```
+
+2. Make new mode 'delete'
+
+```JavaScript
+else if (state.mode === "delete") {
+document.querySelector("#content").innerHTML = `
+		<article>
+			<h2>Delete Item</h2>
+			Complete
+		</article>
+	`;
+}
+```
