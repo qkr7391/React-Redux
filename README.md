@@ -271,7 +271,7 @@ Redux
 
 ## Redux Study - Day 4
 
-### Prectice - Static Web page
+### Prectice - Static Web page #1
 
 simple stting
 
