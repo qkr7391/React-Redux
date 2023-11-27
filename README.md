@@ -375,3 +375,6 @@ What if you had 100 million lines of code in each section? If you had all your c
 	 	content();
 </script>
 ```
+
+- Readability
+- Recyclability
