@@ -4,6 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Static Web page</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.js"
+			integrity="sha512-Olr8rkMYuxq3KpAPjYA/mAVYe7EIEP4RkhoAvD/qOrlauzE4CTvpQSg/cRX0/5Qreret4aobD0vg1xtjBqR7VA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
 	</head>
 	<body>
 		<div id="subject"></div>
@@ -14,40 +20,59 @@
 			function subject() {
 				document.querySelector("#subject").innerHTML = `
 			             <header>
-			        <h1>WEB</h1>
-			        Hello, WEB!
-			       </header>
+							<h1>WEB</h1>
+							Hello, WEB!
+						</header>
 			             `;
 			}
 
 			function TOC() {
+				var state = store.getState();
+				var i = 0;
+				var liTags = "";
+				while (i < state.contents.length) {
+					liTags += `
+					<li><a href="${state.contents[i].id}">${state.contents[i].title}</a></li>
+					`;
+					i++;
+				}
 				document.querySelector("#toc").innerHTML = `
-                <nav>
-                    <ol>
-                        <li><a href="1.html">HTML</a></li>
-                        <li><a href="2.html">CSS</a></li>
-                    </ol>
-                </nav>
-                `;
+			             <nav>
+			                 <ol>${liTags}</ol>
+			             </nav>
+			             `;
 			}
 
 			function control() {
 				document.querySelector("#control").innerHTML = `
-                <ul>
-                    <li><a href="/creat">create</a></li>
-                    <li><input type="button" value="delete" /></li>
-                </ul>
-                `;
+			             <ul>
+			                 <li><a href="/creat">create</a></li>
+			                 <li><input type="button" value="delete" /></li>
+			             </ul>
+			             `;
 			}
 
 			function content() {
 				document.querySelector("#content").innerHTML = `
-                    <article>
-                        <h2>HTML</h2>
-                        HTML is ...
-                    </article>
-		        `;
+			                 <article>
+			                     <h2>HTML</h2>
+			                     HTML is ...
+			                 </article>
+			       `;
 			}
+
+			function reducer(state, action) {
+				if (state === undefined) {
+					return {
+						contents: [
+							{ id: 1, title: "HTML", desc: "HTML is..." },
+							{ id: 2, title: "CSS", desc: "CSS is..." },
+						],
+					};
+				}
+				return;
+			}
+			var store = Redux.createStore(reducer);
 
 			subject();
 			TOC();

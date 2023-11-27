@@ -267,6 +267,8 @@ Redux
 - Single store (keep only one store)
 - The store is processed by the reducer.
 
+---
+
 ## Redux Study - Day 4
 
 ### Practice - Static Web page #1
@@ -376,3 +378,65 @@ content();
 
 - Readability
 - Recyclability
+
+---
+
+## Redux Study - Day 5
+
+### Practice - Static Web page #2
+
+To take advantage of redundancy
+
+1. create a store
+
+2. create a reducer that should be sent to the store
+   2.1 In the reducer that is executed once after the store is created and regardless of the action value, the state value is undefined, and the initial value should be set at that time.
+
+   2.2 As the initial value, you can set the value that the application will need for the first time.
+
+```HTML
+<script>
+	function reducer(state, action) {
+		if (state === undefined) {
+			return {contents:[
+				{id:1, title:'HTML', desc:'HTML is...'}
+				{id:2, title:'CSS', desc:'CSS is...'}
+			]};
+		}
+		return;
+	}
+
+	var store = Redux.createStore(reducer);
+</script>
+```
+
+![Alt text](<Screenshot 2023-11-27 at 12.13.49 AM.png>)
+
+---
+
+EX)) TOC();
+
+Takes a status value and creates as many <li> tags as there are contents in the status value.
+
+```HTML
+<script>
+function TOC() {
+				var state = store.getState();
+				var i = 0;
+				var liTags = "";
+				while (i < state.contents.length) {
+					liTags += `
+					<li><a href="${state.contents[i].id}">${state.contents[i].title}</a></li>
+					`;
+					i++;
+				}
+				document.querySelector("#toc").innerHTML = `
+			             <nav>
+			                 <ol>${liTags}</ol>
+			             </nav>
+			             `;
+			}
+</script>
+```
+
+> Each component fetches a state value from the store and generates HTML code based on that state value, allowing you to create web pages that are generated based on that state.
