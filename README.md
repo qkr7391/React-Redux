@@ -16,13 +16,20 @@ Youtube: https://youtu.be/rp818HjNMuw
 
 ---
 
-# 2. Simple Redux-React
+# 2. Simple React
 
 ---
 
 Using:
 
-- HTML
+- React
+- ***
+
+# 3. Simple React-Redux
+
+---
+
+Using:
+
 - React
 - Redux
--
