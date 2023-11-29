@@ -23,7 +23,8 @@ Youtube: https://youtu.be/rp818HjNMuw
 Using:
 
 - React
-- ***
+- JavaScript
+- HTML
 
 # 3. Simple React-Redux
 
