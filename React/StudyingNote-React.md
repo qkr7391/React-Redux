@@ -12,4 +12,24 @@
 
 - npm install(npm)
 - create react app install(npx)
--
+
+---
+
+- npm run start
+
+---
+
+## JavaScript CODING
+
+- index.html >>>
+
+```HTML
+<div id="root"></div>
+
+```
+
+- index.js >>> entry file
+
+- App.js >>> Parts of the code that we actually need to touch.
+
+\*\* The files are connected and call each other.
