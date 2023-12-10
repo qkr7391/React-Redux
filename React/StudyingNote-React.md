@@ -219,3 +219,13 @@ return (
 ### Separating into component files
 
 Since all the components are in one JS file, as the functionality gets more complex, the code gets more complex and messy. Therefore, we need to separate these components into their own files.
+
+```JavaScript
+import componentName from "file/path";
+
+class componentName extends Component {
+	...
+}
+
+export defaule componentName;
+```
