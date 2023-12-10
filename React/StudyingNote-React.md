@@ -213,3 +213,9 @@ return (
     <div className="App">
         <Subject title="WEB" sub="world wide web!"></Subject>
 ```
+
+---
+
+### Separating into component files
+
+Since all the components are in one JS file, as the functionality gets more complex, the code gets more complex and messy. Therefore, we need to separate these components into their own files.
