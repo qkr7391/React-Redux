@@ -229,3 +229,20 @@ class componentName extends Component {
 
 export defaule componentName;
 ```
+
+---
+
+### state & props
+
+- props: Props, short for "properties," are a way to pass data from a parent component to a child component in React. They are similar to function arguments in that they allow you to pass values from one component to another. Props are immutable, which means that once they are passed to a component, they cannot be changed.
+
+- state: State represents the internal state of a component. It's an object that stores data that can be changed within the component. State should only be used for data that is specific to a component and can't be computed from props. When the state of a component changes, React will re-render the component and its children.
+
+- init - constructor [can use class]
+
+```JavaScript
+constructor(props){
+	super(props);
+...
+}
+```
