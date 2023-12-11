@@ -249,3 +249,31 @@ constructor(props){
 
 > Differences Between React Props and React State:  
 > Props are used to pass data from a parent component to a child component, while state is used to manage data within a component. Props are immutable and cannot be changed within a component, while state is mutable and can be updated using the setState function. Props are passed down from the parent component and are read-only within the child component, while state is only accessible within the component where it is defined. Props can be used to customize the behavior or appearance of a component, while state is used to keep track of information that can change over time.
+
+<TOC>
+```JavaScript
+render() {
+		var lists = [];
+		var data = this.props.data;
+		var i = 0;
+		while (i < data.length) {
+			lists.push(
+				<li key={data[i].id}>
+					<a href={"/content/" + data[i].id}> {data[i].title}</a>
+				</li>
+			);
+			i++;
+		}
+		return (
+			<nav>
+				<ul>{lists}</ul>
+			</nav>
+		);
+	}
+```
+If multiple elements are created automatically, an error occurs. (Console)
+-> Each list item must have a props roll, called a key.
+[<li key={data[i].id}>]
+
+\*\*\* The parent app is using internal information called state and passing it to the child via props.
+The app doesn't need to know how the topic works internally. It only needs to know from the user's point of view, "What type of information should I pass to the props called data?".
