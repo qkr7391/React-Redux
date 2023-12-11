@@ -246,3 +246,6 @@ constructor(props){
 ...
 }
 ```
+
+> Differences Between React Props and React State:  
+> Props are used to pass data from a parent component to a child component, while state is used to manage data within a component. Props are immutable and cannot be changed within a component, while state is mutable and can be updated using the setState function. Props are passed down from the parent component and are read-only within the child component, while state is only accessible within the component where it is defined. Props can be used to customize the behavior or appearance of a component, while state is used to keep track of information that can change over time.
