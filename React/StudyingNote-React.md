@@ -309,3 +309,18 @@ if (subject.mode === "welcome") {
 - Depending on the value of the mode, the values assigned to \_title and \_desc will be different, and if they change, they will be rendered a new.
 
 ---
+
+### event
+
+ex)
+
+```JavaScript
+<header>
+	<h1>
+		<a href="/" onClick = {function(e){
+			e.prevenetDefault();
+		}}>{subject.title}</a>
+	</h1>
+	{subject.sub}
+</header>
+```

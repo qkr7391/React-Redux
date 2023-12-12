@@ -29,7 +29,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Subject title={subject.title} sub={subject.sub}></Subject>
+			{/* <Subject title={subject.title} sub={subject.sub}></Subject> */}
 			<TOC data={subject.contents}></TOC>
 			<Content title={_title} desc={_desc}></Content>
 		</div>
