@@ -312,7 +312,7 @@ if (subject.mode === "welcome") {
 
 ### event
 
-ex)
+ex) install event
 
 ```JavaScript
 <header>
@@ -324,3 +324,147 @@ ex)
 	{subject.sub}
 </header>
 ```
+
+ex) change state with event
+
+```JavaScript
+<header>
+	<h1>
+		<a href="/" onClick = {function(e){
+			e.prevenetDefault();
+			this.setState({
+				mode: 'welcome'
+			});
+		}.bind(this)}>{subject.title}</a>
+	</h1>
+	{subject.sub}
+</header>
+```
+
+ex) bind
+
+```JavaScript
+<header>
+	<h1>
+		<a href="/" onClick = {function(e){
+			console.log('event in', this);
+			e.prevenetDefault();
+			return;
+			this.setState({
+				mode: 'welcome'
+			});
+		}.bind(this)}>{subject.title}</a>
+	</h1>
+	{subject.sub}
+</header>
+```
+
+[console]
+var obj = {name: 'egoing'};
+function bindTest() {
+console.log(this.name);
+}
+bindTest();
+--> undefined
+
+vavr bindTest 2 = bindTest.bine(obj);
+bindTest2();
+--> egoing
+
+1. function binding:
+   This happens mostly in class components. When you use a function as a callback or event handler, it means that you want that function to be associated with an instance of the component. This way, inside the function, this will point to the component instance.
+
+```JavaScript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Click me ({this.state.count})
+      </button>
+    );
+  }
+}
+```
+
+Like this, we bind the handleClick function to this in the constructor, so that when we call this.setState inside the handleClick function on button click, this points to the component instance.
+
+2. Binding in a function component using Hooks:
+   Function components don't use this like class components do. Instead, they use React Hooks, useState and useEffect, to manage their state and lifecycle. In function components, the concept of binding is less important, and instead we manipulate state through hooks.
+
+```JavaScript
+import React, { useState } from 'react';
+
+function MyFunctionalComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <button onClick={handleClick}>
+      Click me ({count})
+    </button>
+  );
+}
+```
+
+In this case, the useState hook is used to create the count state, and the setCount function is used to change its value. The handleClick function is defined inside the function component, which itself forms a closure to access and change the count state.
+
+\*\*\* To summarize, binding a function mainly means setting this correctly in the class component, and the function component uses React Hooks to manage its state and lifecycle.
+
+ex) setState()
+
+```JavaScript
+<header>
+	<h1>
+		<a href="/" onClick = {function(e){
+			console.log('event in', this);
+			e.prevenetDefault();
+			this.state.mode = 'welcome';
+		}.bind(this)}>{subject.title}</a>
+	</h1>
+	{subject.sub}
+</header>
+```
+
+```JavaScript
+<header>
+	<h1>
+		<a href="/" onClick = {function(e){
+			console.log('event in', this);
+			e.prevenetDefault();
+			this.setState({
+				mode: 'welcome'
+			});
+		}.bind(this)}>{subject.title}</a>
+	</h1>
+	{subject.sub}
+</header>
+```
+
+When changing the value of state in React, it's possible to change the value directly in the constructor via this.state. However, there are a number of important reasons why you should use setState() after the component has already been created:
+
+Asynchronous processing and performance optimization:
+setState() handles state changes asynchronously. This allows React to bundle multiple setState() calls into one to optimize performance, and allows multiple state changes to be processed in bulk with a single update.
+
+Manage reloads efficiently:
+With setState(), React schedules components to re-render at the appropriate time after a state change. In the process, it improves performance by updating only the parts that have changed.
+
+Asynchronous, natural updates:
+Because setState() works asynchronously, updating the state can take multiple calls in sequence. This enables natural and predictable state updates.
+
+Lifecycle management and handling of side effects:
+setState() allows you to handle side effects by taking as an argument a callback that runs after a state change. You can utilize this to perform any necessary actions after a state change.
+
+While changing this.state directly in the constructor may be recommended for initial state setup, it's recommended that you use setState() inside your component to change state afterward. This is important for React's state management and rendering optimization.
