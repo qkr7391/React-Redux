@@ -277,3 +277,35 @@ If multiple elements are created automatically, an error occurs. (Console)
 
 \*\*\* The parent app is using internal information called state and passing it to the child via props.
 The app doesn't need to know how the topic works internally. It only needs to know from the user's point of view, "What type of information should I pass to the props called data?".
+
+---
+
+### event state props render funcion
+
+```JavaScript
+const [subject, setSubject] = useState({
+		mode: "welcome",
+		title: "WEB",
+		sub: "world wide web!",
+		welcome: { title: "welcome", desc: "Hello, React!!!" },
+		contents: [
+			{ id: 1, title: "HTML", desc: "HTML is for information" },
+			{ id: 2, title: "CSS", desc: "CSS is for design" },
+			{ id: 3, title: "JavaScript", desc: "JavaScript is for interactive" },
+		],
+	});
+
+var _title,
+	_desc = null;
+if (subject.mode === "welcome") {
+	_title = subject.welcome.title;
+	_desc = subject.welcome.desc;
+} else if (subject.mode === "read") {
+	_title = subject.contents[0].title;
+	_desc = subject.contents[0].desc;
+}
+```
+
+- Depending on the value of the mode, the values assigned to \_title and \_desc will be different, and if they change, they will be rendered a new.
+
+---
