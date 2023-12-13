@@ -7,6 +7,7 @@ import Subject from "./components/Subject";
 function App() {
 	const [subject, setSubject] = useState({
 		mode: "welcome",
+		selected_content_id: null,
 		title: "WEB",
 		sub: "world wide web!",
 		welcome: { title: "welcome", desc: "Hello, React!!!" },
@@ -23,8 +24,16 @@ function App() {
 		_title = subject.welcome.title;
 		_desc = subject.welcome.desc;
 	} else if (subject.mode === "read") {
-		_title = subject.contents[0].title;
-		_desc = subject.contents[0].desc;
+		var i = 0;
+		while (i < subject.contents.length) {
+			var data = subject.contents[i];
+			if (data.id === subject.selected_content_id) {
+				_title = data.title;
+				_desc = data.desc;
+				break;
+			}
+			i++;
+		}
 	}
 
 	return (
@@ -36,7 +45,16 @@ function App() {
 					setSubject({ ...subject, mode: "welcome" });
 				}}
 			></Subject>
-			<TOC data={subject.contents}></TOC>
+			<TOC
+				onChangePage={(id) => {
+					setSubject({
+						...subject,
+						mode: "read",
+						selected_content_id: Number(id),
+					});
+				}}
+				data={subject.contents}
+			></TOC>
 			<Content title={_title} desc={_desc}></Content>
 		</div>
 	);

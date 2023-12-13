@@ -471,7 +471,7 @@ While changing this.state directly in the constructor may be recommended for ini
 
 ---
 
-### Making Component event
+### Making Component event_01
 
 - When the Subject is clicked, call the onChangePage() function to set the new state
 
@@ -508,3 +508,93 @@ While changing this.state directly in the constructor may be recommended for ini
 		setSubject({ ...subject, mode: "welcome" });
 	}}></Subject>
 ```
+
+---
+
+### Making Component event_02
+
+- Use events from a child component to change the state of the parent component.
+
+Pass event to props -> make child component fire event when clicked -> change parent component's state via event -> render -> pass changed props to child component -> application dynamically changes.
+
+- When clicking on a TOC item, change the mode to read and display its contents
+
+```JavaScript
+<a
+	href={"/content/" + data[i].id}
+	onClick={function (e) {
+		e.preventDefault();
+		this.props.onChangePage();
+	}.bind(this)}
+>
+	{data[i].title}
+</a>
+```
+
+-> Inside the onClick function of the A tag, information about the selected a should be passed to the parent component.
+(>> App can change state with setState() and run render())
+
+```JavaScript
+<TOC
+	onChangePage={() => {
+		setSubject({ ...subject, mode: "read" });
+	}}
+	data={subject.contents}
+></TOC>
+```
+
+---
+
+### Makind Component event_03
+
+```JavaScript
+<a
+	href={"/content/" + data[i].id}
+	data-id={data[i].id}
+	onClick={function (e) {
+		e.preventDefault();
+		this.props.onChangePage(e.target.dataset.id);
+	}.bind(this)}>{data[i].title}
+</a>
+```
+
+-> Use events to convey information.
+
+- An event has a property called target.
+- It contains information about the target where the event happened.
+- To get the information via event.target, we create a data-id attribute on the a tag and pass it as a parameter to this.props.onChanePage()
+
+```JavaScript
+<TOC
+	onChangePage={(id) => {
+		setSubject({
+			...subject,
+			mode: "read",
+			selected_content_id: Number(id),
+		});
+	}}
+	data={subject.contents}
+></TOC>
+```
+
+--> Extract a value from e to target.dataset.id when firing an event on a property called onclick
+
+- How not to use the property
+  If you put data[i].id as the second argument in ->bind, it will be put as the first parameter value. Anything that already exists will be pushed back by one space.
+
+```JavaScript
+<a
+	href={"/content/" + data[i].id}
+	data-id={data[i].id}
+	onClick={function (id, e) {
+		e.preventDefault();
+		this.props.onChangePage(e.target.dataset.id);
+	}.bind(this, data[i].id)}>{data[i].title}
+</a>
+```
+
+--> Function(id) stores the variable passed in id, and setState(=setSubject) assigns selected_content_id to the id value passed in.
+
+The value of the Data-id property is a string, so we convert it to a number with Number(id).
+
+When the state is changed through setState(=setSubject), the render function is called, and the page is re-rendered with the changed state.
