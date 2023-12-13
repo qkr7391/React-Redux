@@ -598,3 +598,18 @@ Pass event to props -> make child component fire event when clicked -> change pa
 The value of the Data-id property is a string, so we convert it to a number with Number(id).
 
 When the state is changed through setState(=setSubject), the render function is called, and the page is re-rendered with the changed state.
+
+---
+
+### Organizing concepts
+
+- props vs state
+  Props are values that are given to a component from the outside in, while state is something that can be changed from the inside out.
+  Props are values that you pass internally, so their value shouldn't change, so they are read-only.
+  Both Props and state call the render() function
+
+- Use props when issuing commands from a parent component to a child component
+
+- Use event when you want to change a value from the child component to the parent component.
+
+Translated with www.DeepL.com/Translator (free version)
