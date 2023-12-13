@@ -55,6 +55,8 @@ function App() {
 				}}
 				data={subject.contents}
 			></TOC>
+			<Control></Control>
+
 			<Content title={_title} desc={_desc}></Content>
 		</div>
 	);
