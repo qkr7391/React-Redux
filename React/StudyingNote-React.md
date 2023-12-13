@@ -468,3 +468,43 @@ Lifecycle management and handling of side effects:
 setState() allows you to handle side effects by taking as an argument a callback that runs after a state change. You can utilize this to perform any necessary actions after a state change.
 
 While changing this.state directly in the constructor may be recommended for initial state setup, it's recommended that you use setState() inside your component to change state afterward. This is important for React's state management and rendering optimization.
+
+---
+
+### Making Component event
+
+- When the Subject is clicked, call the onChangePage() function to set the new state
+
+1. test
+
+```JavaScript
+<a
+	href="/"
+	onClick={function (e) {
+		e.preventDefault();
+		this.props.onChangePage();
+	}.bind(this)}>
+	{this.props.title}
+</a>
+```
+
+```JavaScript
+<Subject
+	title={subject.title}
+	sub={subject.sub}
+	onChangePage={function() {
+		alert("Hey");
+	}.bind(this)}>
+</Subject>
+```
+
+2. practice
+
+```JavaScript
+<Subject
+	title={subject.title}
+	sub={subject.sub}
+	onChangePage={() => {
+		setSubject({ ...subject, mode: "welcome" });
+	}}></Subject>
+```

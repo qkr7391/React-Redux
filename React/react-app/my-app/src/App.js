@@ -29,23 +29,13 @@ function App() {
 
 	return (
 		<div className="App">
-			{/* <Subject title={subject.title} sub={subject.sub}></Subject> */}
-			<header>
-				<h1>
-					<a
-						href="/"
-						onClick={function (e) {
-							e.prevenetDefault();
-							this.setState({
-								mode: "welcome",
-							});
-						}.bind(this)}
-					>
-						{subject.title}
-					</a>
-				</h1>
-				{subject.sub}
-			</header>
+			<Subject
+				title={subject.title}
+				sub={subject.sub}
+				onChangePage={() => {
+					setSubject({ ...subject, mode: "welcome" });
+				}}
+			></Subject>
 			<TOC data={subject.contents}></TOC>
 			<Content title={_title} desc={_desc}></Content>
 		</div>
