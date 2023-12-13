@@ -280,7 +280,7 @@ The app doesn't need to know how the topic works internally. It only needs to kn
 
 ---
 
-### event state props render funcion
+### event state props render function
 
 ```JavaScript
 const [subject, setSubject] = useState({
@@ -612,4 +612,20 @@ When the state is changed through setState(=setSubject), the render function is 
 
 - Use event when you want to change a value from the child component to the parent component.
 
-Translated with www.DeepL.com/Translator (free version)
+---
+
+### create Implementation 01
+
+- I'm going to put the Create, Update, and Delete buttons between the TOC and Content items.
+
+![Alt text](<Screenshot 2023-12-13 at 4.28.13 PM.png>)
+
+Function of the [Create] button
+
+- When clicked, the App component's mode will change to 'create' and the
+
+- The component that is being used in 'read' mode in Content will be replaced with a component that can be used in 'create' mode.
+
+- Inside the component is a form, and when you enter data into the form and click Save, the App component will store the new component information as an object in the list of contents [id, title, desc].
+
+- The content displayed in the TOC will also change
