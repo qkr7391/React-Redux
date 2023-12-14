@@ -686,3 +686,26 @@ if (subject.mode === "welcome") {
 ```
 
 \*\* Making Form for creating
+
+```JavaScript
+<form
+	action="/create_process"
+	method="post"
+	onSubmit={(e) => {
+		e.preventDefault();
+		alert("Submit");
+	}}
+>
+```
+
+- action="create_process": This attribute specifies the URL where the form data will be submitted when the form is submitted. In this case, it's set to /create_process.
+
+- method="post": This attribute specifies the HTTP method used when submitting the form. post is commonly used to send data to the server in a way that's not visible to the user (in the URL).
+
+- onSubmit={(e) => {...}}: This is an event handler that triggers when the form is submitted. The onSubmit event occurs when the form is submitted. In this case, it's preventing the default form submission behavior using e.preventDefault(), which stops the form from submitting the traditional way (e.g., navigating to a new page or performing a full-page reload). Instead, it executes the function provided inline.
+
+- e is the event object.
+
+- e.preventDefault() prevents the default form submission behavior.
+
+- alert("Submit"): This line triggers an alert dialog displaying "Submit" when the form is submitted. This is just an example; usually, this would be where you handle form data, make AJAX requests, or perform other actions based on the form submission.
