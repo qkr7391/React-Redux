@@ -709,3 +709,69 @@ if (subject.mode === "welcome") {
 - e.preventDefault() prevents the default form submission behavior.
 
 - alert("Submit"): This line triggers an alert dialog displaying "Submit" when the form is submitted. This is just an example; usually, this would be where you handle form data, make AJAX requests, or perform other actions based on the form submission.
+
+---
+
+### Adding new content
+
+Adding newly created content to an existing list
+
+- Press the Create button to create the data, then press the submit button to call and execute the onSubmit() function so that the data is added to the existing list of content.
+
+- Create an onSubmit() function in the CreateContent component and send values for title and desc
+
+```JavaScript
+onSubmit={(e) => {
+	e.preventDefault();
+	// debugger;
+	this.props.onSubmit(e.target.title.value, e.target.desc.value);
+}}
+```
+
+- Verify that the App component receives those values
+
+```JavaScript
+_article = (
+	<CreateContent
+		onSubmit={(_title, _desc) => {
+		  console.log(_title, _desc);
+		}}
+	></CreateContent>
+);
+```
+
+- Takes the length of the existing contents and assigns one new value to the new length, does not modify the existing contents value, creates a new duplicate value, and changes the value using setState(=setSubject).
+
+```JavaScript
+<CreateContent
+	onSubmit={(_title, _desc) => {
+		// console.log(_title, _desc);
+		subject.max_content_id = subject.contents.length + 1;
+		var _contents = subject.contents.concat({
+			id: subject.max_content_id,
+			title: _title,
+			desc: _desc,
+		});
+		setSubject({
+			...subject,
+			contents: _contents,
+		});
+	}}
+></CreateContent>
+```
+
+\*\* Why you [concat] instead of [push]?
+--> When using setState() to change the state of an array, concat() is preferred over push() because it preserves immutability.
+
+When changing state in React, it is recommended to change the previous state by creating a new object or array. The push() method adds a new element to the array, while concat() returns a new array. The main differences here are
+
+Immutability:
+
+Push(): Modifies the original array itself by adding elements to an existing array.
+CONCAT(): creates a new array, adds elements to an existing array, and returns it. The existing array remains unchanged.
+Because push() modifies the existing array itself, React requires that state changes create a new state without directly modifying the old state, which is important for maintaining immutability.
+
+Performance and predictability:
+Since concat() returns a new array, it creates a new array without changing the original array, which helps React optimize performance by maintaining state immutability and comparing it to the previous state.
+
+---
