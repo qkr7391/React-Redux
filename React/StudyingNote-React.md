@@ -893,3 +893,24 @@ onSubmit={(_id, _title, _desc) => {
 	});
 }}
 ```
+
+\*\*\* Extra
+
+```JavaScript
+var _contents = subject.contents.concat({
+	id: subject.max_content_id,
+	title: _title,
+	desc: _desc,
+});
+
+-->>
+
+var _contents = Array.from(subject.contents);
+_contents.push({id: subject.max_content_id,
+	title: _title,
+	desc: _desc,});
+```
+
+---
+
+### delete Implementation
