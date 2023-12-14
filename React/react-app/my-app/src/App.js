@@ -52,7 +52,6 @@ function App() {
 			_article = (
 				<CreateContent
 					onSubmit={(_title, _desc) => {
-						// console.log(_title, _desc);
 						subject.max_content_id = subject.contents.length + 1;
 						var _contents = subject.contents.concat({
 							id: subject.max_content_id,
@@ -62,6 +61,8 @@ function App() {
 						setSubject({
 							...subject,
 							contents: _contents,
+							mode: "read",
+							selected_content_id: subject.max_content_id,
 						});
 					}}
 				></CreateContent>
