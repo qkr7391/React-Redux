@@ -3,6 +3,7 @@ import "./App.css";
 import TOC from "./components/TOC";
 import Content from "./components/Content";
 import Subject from "./components/Subject";
+import Control from "./components/Control";
 
 function App() {
 	const [subject, setSubject] = useState({
@@ -55,8 +56,14 @@ function App() {
 				}}
 				data={subject.contents}
 			></TOC>
-			<Control></Control>
-
+			<Control
+				onChangeMode={(_mode) => {
+					setSubject({
+						...subject,
+						mode: _mode,
+					});
+				}}
+			></Control>
 			<Content title={_title} desc={_desc}></Content>
 		</div>
 	);
