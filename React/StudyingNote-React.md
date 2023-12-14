@@ -629,3 +629,7 @@ Function of the [Create] button
 - Inside the component is a form, and when you enter data into the form and click Save, the App component will store the new component information as an object in the list of contents [id, title, desc].
 
 - The content displayed in the TOC will also change
+
+---
+
+### create Implementation 02
