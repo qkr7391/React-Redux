@@ -633,3 +633,19 @@ Function of the [Create] button
 ---
 
 ### create Implementation 02
+
+- change mode
+
+Call the onChangeMode function on the a tag of each list in the Control and send 'create', 'update', and 'delete' as parament, respectively
+
+```JavaScript
+<a
+	href="/create"
+	onClick={(e) => {
+		e.preventDefault();
+		this.props.onChangeMode("create");
+	}}
+>
+```
+
+The onChangeMode function changes the Mode based on the parameters it receives
