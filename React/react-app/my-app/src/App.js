@@ -10,6 +10,7 @@ function App() {
 	const [subject, setSubject] = useState({
 		mode: "welcome",
 		selected_content_id: null,
+		max_content_id: null,
 		title: "WEB",
 		sub: "world wide web!",
 		welcome: { title: "welcome", desc: "Hello, React!!!" },
@@ -41,7 +42,23 @@ function App() {
 		}
 		_article = <ReadContent title={_title} desc={_desc}></ReadContent>;
 	} else if (subject.mode === "create") {
-		_article = <CreateContent></CreateContent>;
+		_article = (
+			<CreateContent
+				onSubmit={(_title, _desc) => {
+					// console.log(_title, _desc);
+					subject.max_content_id = subject.contents.length + 1;
+					var _contents = subject.contents.concat({
+						id: subject.max_content_id,
+						title: _title,
+						desc: _desc,
+					});
+					setSubject({
+						...subject,
+						contents: _contents,
+					});
+				}}
+			></CreateContent>
+		);
 	}
 
 	return (
