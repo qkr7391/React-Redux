@@ -914,3 +914,36 @@ _contents.push({id: subject.max_content_id,
 ---
 
 ### delete Implementation
+
+- When onChangeMode is executed on a control and \_mode is 'delete', check using window.confirm(), delete if confirmed, otherwise keep default settings
+
+```JavaScript
+<Control
+	onChangeMode={(_mode) => {
+		if (_mode === "delete") {
+			if (window.confirm("Will you delete?")) {
+				var _contents = Array.from(subject.contents);
+				var i = 0;
+				while (i < _contents.length) {
+					if (_contents[i].id === subject.selected_content_id) {
+						_contents.splice(i, 1);
+						break;
+					}
+					i++;
+				}
+				setSubject({
+					...subject,
+					mode: "welcome",
+					contents: _contents,
+				});
+				alert("delet completed!");
+			}
+		} else {
+			setSubject({
+				...subject,
+				mode: _mode,
+			});
+		}
+	}}
+></Control>
+```
