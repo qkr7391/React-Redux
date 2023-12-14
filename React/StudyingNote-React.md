@@ -811,3 +811,59 @@ shouldComponentUpdate(newProps, newState){
 ```
 
 --> If false is returned, no rendering is done; if ture is returned, rendering is done.
+
+---
+
+### update Implementation 01
+
+The function of update is to bring in existing content, show it, and allow you to modify it.
+
+1. if Subject.mode === 'update', read in the content
+
+```JavaScript
+else if (subject.mode === "update") {
+	_content = getReadContent();
+	_article = (
+		<UpdateContent data={_content} ...>
+	);
+}
+```
+
+2. Assign title and desc via props in the constructor, and assign the values executed by calling the function to take in new inputs.
+
+```JavaScript
+constructor(props) {
+	super(props);
+	this.state = {
+		title: this.props.data.title,
+		desc: this.props.data.desc,
+	};
+	this.inputFormHandler = this.inputFormHandler.bind(this);
+}
+```
+
+3. Displaying existing data in a form
+
+```JavaScript
+<form
+	action="/create_process"
+	method="post"
+	onSubmit={(e) => {
+		e.preventDefault();
+		this.props.onSubmit(e.target.title.value, e.target.desc.value);
+	}}
+>
+```
+
+4. Change to a new state value
+
+```JavaScript
+inputFormHandler(e) { this.setState({ [e.target.name]: e.target.value });
+	}
+```
+
+5. Assigning Replaced Values
+
+```JavaScript
+<input ... onChange={this.inputFormHandler} ></input>
+```
