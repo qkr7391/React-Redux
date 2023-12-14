@@ -1,7 +1,8 @@
 import React, { Component, useState } from "react";
 import "./App.css";
 import TOC from "./components/TOC";
-import Content from "./components/Content";
+import ReadContent from "./components/ReadContent";
+import CreateContent from "./components/CreateContent";
 import Subject from "./components/Subject";
 import Control from "./components/Control";
 
@@ -20,10 +21,13 @@ function App() {
 	});
 
 	var _title,
-		_desc = null;
+		_desc,
+		_article = null;
+
 	if (subject.mode === "welcome") {
 		_title = subject.welcome.title;
 		_desc = subject.welcome.desc;
+		_article = <ReadContent title={_title} desc={_desc}></ReadContent>;
 	} else if (subject.mode === "read") {
 		var i = 0;
 		while (i < subject.contents.length) {
@@ -35,6 +39,9 @@ function App() {
 			}
 			i++;
 		}
+		_article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+	} else if (subject.mode === "create") {
+		_article = <CreateContent></CreateContent>;
 	}
 
 	return (
@@ -64,7 +71,8 @@ function App() {
 					});
 				}}
 			></Control>
-			<Content title={_title} desc={_desc}></Content>
+			{_article}
+			{/* <ReadContent title={_title} desc={_desc}></ReadContent> */}
 		</div>
 	);
 }

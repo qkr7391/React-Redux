@@ -649,3 +649,40 @@ Call the onChangeMode function on the a tag of each list in the Control and send
 ```
 
 The onChangeMode function changes the Mode based on the parameters it receives
+
+---
+
+### create Implementation 03
+
+- Changing the content to a component that will be used in the 'read' when the 'create' button is pressed
+
+- Change the content part to a new {\_article} variable -> to make it reactive to incoming values.
+
+```JavaScript
+<div>
+...
+{_article}
+</div>
+```
+
+- Change the content part to a new {\_article} variable -> to make it reactive to incoming values.
+- Assign the newly created \_article variable the correct value based on the conditions
+
+1. mode === "welcome"/"read"
+   -> <ReadContent> (change the existing Content to ReadContent)
+2. mode === "create"
+   -> <CreateContent>
+
+```JavaScript
+if (subject.mode === "welcome") {
+...
+	_article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+} else if (subject.mode === "read") {
+...
+	_article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+} else if (subject.mode === "create") {
+	_article = <CreateContent></CreateContent>;
+}
+```
+
+\*\* Making Form for creating
