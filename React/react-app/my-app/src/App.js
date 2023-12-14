@@ -71,14 +71,16 @@ function App() {
 			_article = (
 				<UpdateContent
 					data={_content}
-					onSubmit={(_title, _desc) => {
-						// console.log(_title, _desc);
-						subject.max_content_id = subject.contents.length + 1;
-						var _contents = subject.contents.concat({
-							id: subject.max_content_id,
-							title: _title,
-							desc: _desc,
-						});
+					onSubmit={(_id, _title, _desc) => {
+						var _contents = Array.from(subject.contents);
+						var i = 0;
+						while (i < _contents.length) {
+							if (_contents[i].id === _id) {
+								_contents[i] = { id: _id, title: _title, desc: _desc };
+								break;
+							}
+							i++;
+						}
 						setSubject({
 							...subject,
 							contents: _contents,

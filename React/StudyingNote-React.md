@@ -867,3 +867,29 @@ inputFormHandler(e) { this.setState({ [e.target.name]: e.target.value });
 ```JavaScript
 <input ... onChange={this.inputFormHandler} ></input>
 ```
+
+---
+
+### ### update Implementation 02
+
+[App.js]
+
+- When the onSubmit() function is enabled, it assigns the newly replicated content to a new variable, reassigns the value to the new value, and changes the state value.
+
+```JavaScript
+onSubmit={(_id, _title, _desc) => {
+	var _contents = Array.from(subject.contents);
+	var i = 0;
+	while (i < _contents.length) {
+		if (_contents[i].id === _id) {
+			_contents[i] = { id: _id, title: _title, desc: _desc };
+			break;
+		}
+		i++;
+	}
+	setSubject({
+		...subject,
+		contents: _contents,
+	});
+}}
+```
