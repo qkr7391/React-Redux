@@ -775,3 +775,39 @@ Performance and predictability:
 Since concat() returns a new array, it creates a new array without changing the original array, which helps React optimize performance by maintaining state immutability and comparing it to the previous state.
 
 ---
+
+### shouldComponentUpdate()
+
+If your content or data is constantly re-rendered even though it hasn't changed, it can cause performance degradation, rendering costs, network and resource consumption, and a poor user experience.
+
+Therefore, you can use shouldComponentUpdate() to ensure that rendering is only done when necessary.
+
+shouldComponentUpdate() is one of the lifecycle methods you can implement in a React component class. It is called before the component is updated and is used to determine whether React should re-render the component.
+
+By default, shouldComponentUpdate() returns true, ensuring that the component is always rendered. However, you can use this method to optimize the performance of your component.
+
+--> shouldComponentUpdate() is one of the lifecycle methods you can implement in a React component class. This method is called before the component is updated, and is used to determine whether React should re-render the component.
+
+By default, shouldComponentUpdate() returns true to ensure that the component is always rendered, but you can use this method to optimize the performance of your component.
+
+You typically use this method to prevent re-rendering in the following situations
+
+Performance optimization:
+
+When the component's state or properties (props) have changed, but don't actually affect rendering.
+If rendering doesn't change anything on the screen, you can improve performance by preventing unnecessary re-renders.
+Setting render conditions:
+
+You can set conditions to prevent components from rendering based on certain conditions.
+For example, you can set it to only render when a certain state hasn't changed.
+
+```JavaScript
+shouldComponentUpdate(newProps, newState){
+	if(newprops.data === this.props.data){
+		return false;
+	}
+	return true;
+}
+```
+
+--> If false is returned, no rendering is done; if ture is returned, rendering is done.
