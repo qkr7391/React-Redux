@@ -27,8 +27,14 @@ As applications become more complex, it becomes more difficult to construct them
 
 - However, both have the inefficiency of being delivered to members who do not need it.
 
-- Therefore, by using Reactor Redux, a library that connects React and Redux, the news can be delivered only to the members who need it.
+- Therefore, by using React-Redux, a library that connects React and Redux, the news can be delivered only to the members who need it.
 
 ---
 
-## Day 01
+## Study Plan
+
+1. simple react component structure without redux
+
+2. react component state connect without redux
+
+3. Add redux
