@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
 
-class AddNumberRoot extends Component {
-	render() {
-		return (
-			<div>
-				<h1>Add Number Root</h1>
-			</div>
-		);
-	}
-}
+import AddNumberRoot from "./components/AddNumberRoot";
+import DisplayNumberRoot from "./components/DisplayNumberRoot";
 
 function App() {
-	return <div className="App">Hello World</div>;
+	return (
+		<div className="App">
+			<h1>Root</h1>
+			<AddNumberRoot></AddNumberRoot>
+			<DisplayNumberRoot></DisplayNumberRoot>
+		</div>
+	);
 }
 
 export default App;

@@ -38,3 +38,9 @@ As applications become more complex, it becomes more difficult to construct them
 2. react component state connect without redux
 
 3. Add redux
+
+---
+
+## simple react component structure without redux
+
+- Divided components by 'AddNumberRoot', 'AddNumber', 'DisplayNumberRoot', and 'DisplayNumber'
