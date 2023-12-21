@@ -45,6 +45,8 @@ As applications become more complex, it becomes more difficult to construct them
 
 - Divided components by 'AddNumberRoot', 'AddNumber', 'DisplayNumberRoot', and 'DisplayNumber'
 
+## ![Alt text](image.png)
+
 ---
 
 ## react components state connect without redux
