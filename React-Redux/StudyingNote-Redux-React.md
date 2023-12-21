@@ -405,3 +405,33 @@ root.render(
 	</React.StrictMode>
 );
 ```
+
+---
+
+## mapStateToProps
+
+- mapStateToProps is a function that maps the state of the Redux store to the props of the React component. This function is used as the first argument to the connect function.
+
+- Whenever the state of the Redux store changes, this function is called to update the React component's props. This allows the component to read the state of the Redux store.
+
+- The mapStateToProps function takes two arguments
+
+- state: The current state of the Redux store. You can use this to extract the state that your component needs.
+
+- ownProps (optional): The props that are passed directly to the component. You can utilize ownProps to use a combination of the component's props and the state of the Redux store.
+
+- Typically, the mapStateToProps function extracts some data from the Redux store and maps it to the props your component needs.
+
+ex))
+
+```JavaScript
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userName: state.user.name,
+    itemCount: state.cart.items.length,
+    idFromProps: ownProps.itemId
+  };
+};
+```
+
+--> In the code above, mapStateToProps maps the user and cart states of the Redux store to props in the corresponding component, and at the same time receives the itemId passed to ownProps as a prop. This mapped data can be accessed in the corresponding component as this.props.userName, this.props.itemCount, this.props.idFromProps, etc.
