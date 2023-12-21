@@ -101,3 +101,90 @@ As applications become more complex, it becomes more difficult to construct them
 ---
 
 ## Add Redux
+
+- Why use Redux?
+  --> Using React alone, like the code before, a change in a child component called A would require a trip up to the root and back down again to affect another neighboring component called B. This is a pain. This is where Redux comes in. Redux is useful because it can handle changes in a centralized way.
+
+[store.js]
+--> Create a Store.js to create a central processing unit
+
+\*\* old ver.
+
+```JavaScript
+import { createStore } from "redux";
+
+//reducer
+export default createStore(function (state, action) {
+	if (state === undefined) {
+		return { number: 0 };
+	}
+	if (action.type === "INCREMENT") {
+		// return { number: state.number + action.size };
+		return { ...state, number: state.number + action.size };
+	}
+  return state;
+});
+```
+
+\*\* new ver.
+
+```JavaScript
+import { createStore } from "redux";
+
+// reducer
+const reducer = function (state, action) {
+	if (state === undefined) {
+		return { number: 0 };
+	}
+	if (action.type === "INCREMENT") {
+		// return { number: state.number + action.size };
+		return { ...state, number: state.number + action.size };
+	}
+  return state; // Your actual logic goes here
+};
+
+export default createStore(
+	reducer,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+```
+
+[AddNumber.jsx]
+--> Sending new values to reducers using dispatch
+
+```JavaScript
+import store from "../store";
+
+<input
+  type="button"
+  value="+"
+  onClick={function () {
+    store.dispatch({ type: "INCREMENT", size: this.state.size });
+  }.bind(this)}
+></input>
+```
+
+[DisplayNumber.jsx]
+--> Receiving and applying changing state values from a centralized processor via a subscription
+
+```JavaScript
+state = { number: store.getState().number };
+
+constructor(props) {
+  super(props);
+  store.subscribe(
+    function () {
+      this.setState({ number: store.getState().number });
+    }.bind(this)
+  );
+}
+
+render() {
+  return (
+    <div>
+      <h1>Display number</h1>
+      <input type="text" value={this.state.number} readOnly></input>
+    </div>
+  );
+}
+```
