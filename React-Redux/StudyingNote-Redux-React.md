@@ -188,3 +188,112 @@ render() {
   );
 }
 ```
+
+---
+
+## Removing Redux-dependent features from React components
+
+\*\* Previous - React only
+
+```JavaScript
+import React, { Component } from "react";
+
+export default class AddNumber extends Component {
+	state = { size: 1 };
+	render() {
+		return (
+			<div>
+				<h1>Add number</h1>
+				<input
+					type="button"
+					value="+"
+					onClick={function () {
+						this.props.onClick(this.state.size);
+					}.bind(this)}
+				></input>
+				<input
+					type="text"
+					value={this.state.size}
+					onChange={function (e) {
+						this.setState({ size: Number(e.target.value) });
+					}.bind(this)}
+				></input>
+			</div>
+		);
+	}
+}
+
+```
+
+\*\* After adding Redux
+
+```JavaScript
+import React, { Component } from "react";
+import store from "../store";
+
+export default class AddNumber extends Component {
+	state = { size: 1 };
+	render() {
+		return (
+			<div>
+				<h1>Add number</h1>
+				<input
+					type="button"
+					value="+"
+					onClick={function () {
+						store.dispatch({ type: "INCREMENT", size: this.state.size });
+					}.bind(this)}
+				></input>
+				<input
+					type="text"
+					value={this.state.size}
+					onChange={function (e) {
+						this.setState({ size: Number(e.target.value) });
+					}.bind(this)}
+				></input>
+			</div>
+		);
+	}
+}
+```
+
+--> The old code was worth its weight in parts.
+
+- It can be used in several places within this application
+- You can use it in other applications if you want
+
+This is because you can provide an event handler with a prop called onClick, which will fire the event handler on button click.
+
+But, code which is changed after adding redux relies on Redux's store, which means it can't be reused because it depends on the state that this application is using.
+
+- How can we solve this problem?
+  --> 'wrapping' // You can do this by creating a "container component" that wraps the ed number and handles the redundancy-related functions in the current [AddNumber.jsx] instead.
+
+1. create a Containers folder and create the [AddNumber.jsx] file
+
+2.
+
+```JavaScript
+import AddNumber from "../components/AddNumber";
+import React, { Component } from "react";
+
+export default class extends Component {
+	render() {
+		return <AddNumber
+				onClick={function (size) {
+					store.dispatch({ type: "INCREMENT", size: size });
+				}.bind(this)}
+			></AddNumber>;
+	}
+}
+```
+
+3. in [AddNumberRoot.jsx], replace the incoming file from 'component/AddNumber' to 'container/AddNumber'.
+
+4. move the dispatch part of the existing [AddNumber.jsx] file to the new [AddNumber.jsx] file and change the code so that the old part can function as a component again.
+
+> Increase reusability of existing [AddNumber.jsx] files by breaking dependencies by making new files interact with redux and depend on redux, while existing files act as components, creating a middle bridge.
+
+---
+
+##
