@@ -481,3 +481,16 @@ const mapDispatchToProps = (dispatch) => {
 ```
 
 > In both forms, they are mapped to props in the component via the connect function, and the component can call actions to change the state of the Redux store, such as this.props.onIncrement() or this.props.onDecrement().
+
+---
+
+[connect(a,b)(c);]
+
+> a: mapStateToProps (Optional)
+> a represents the function that maps a slice of the Redux state to the props of your React component. It's used to specify which parts of the Redux store's state you want to expose to your component. This parameter is optional. If omitted, you can pass null or undefined.
+
+> b: mapDispatchToProps (Optional)
+> b represents the function or an object that maps Redux actions to your component's props. It provides a way to dispatch actions from your component. This parameter is also optional. If omitted, you can pass null or undefined.
+
+> c: c represents your React component.
+> c is the actual React component that you want to connect to the Redux store by providing it with the state and/or action dispatching capabilities through connect.
