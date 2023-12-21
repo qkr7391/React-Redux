@@ -45,6 +45,10 @@ As applications become more complex, it becomes more difficult to construct them
 
 - Divided components by 'AddNumberRoot', 'AddNumber', 'DisplayNumberRoot', and 'DisplayNumber'
 
+---
+
+## react components state connect without redux
+
 - You can use props when passing data from parent to child, and pass callback functions as props when passing data from child to parent to update the parent's state.
 
 ```JavaScript
@@ -89,7 +93,3 @@ As applications become more complex, it becomes more difficult to construct them
 --> Inside the AddNumber component, we're using the input element to set and pass values: when the + button is pressed, we call this.props.onClick(this.state.size) to pass the size value to the parent component, and we manipulate the size value through the input element.
 
 \*\*\* A structure that interacts between the AddNumberRoot and the AddNumber component, and passes state within the AddNumber component to the parent component. This allows you to implement a data flow where data is passed from parent to child, and child to parent.
-
----
-
-## react component state connect without redux
