@@ -366,13 +366,13 @@ export default class DisplayNumberRoot extends Component {
 
 ### connect & provider
 
-- connect
+> connect
 
-* In DisplayNumberRoot, you can use the function { connect } function in DisplayNumberRoot to run the existing code.
+> In DisplayNumberRoot, you can use the function { connect } function in DisplayNumberRoot to run the existing code.
 
-The connect function is responsible for connecting your React component to the Redux store. It associates an existing React component with the state or dispatch of Redux, mapping the state of the Redux store to the props of that component.
+> The connect function is responsible for connecting your React component to the Redux store. It associates an existing React component with the state or dispatch of Redux, mapping the state of the Redux store to the props of that component.
 
-connect is used as a Higher Order Component (HOC), taking an existing component and returning a new component.
+> connect is used as a Higher Order Component (HOC), taking an existing component and returning a new component.
 
 [DisplayNumberRoot.jsx]
 
@@ -383,6 +383,12 @@ import { connect } from "react-redux";
 export default connect()(DisplayNumber);
 
 ```
+
+> provider
+
+> A Provider is a component that allows you to access the Redux store from anywhere in the React component tree. To use the Redux store in your React application, you need to wrap your application's top-level components in <Provider>.
+
+> Providers receive a Redux store through a store prop, which makes the Redux store accessible to subcomponents.
 
 [index.js]
 
