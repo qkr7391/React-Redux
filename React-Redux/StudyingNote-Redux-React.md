@@ -41,6 +41,55 @@ As applications become more complex, it becomes more difficult to construct them
 
 ---
 
-## simple react component structure without redux
+## simple react components structure without redux
 
 - Divided components by 'AddNumberRoot', 'AddNumber', 'DisplayNumberRoot', and 'DisplayNumber'
+
+- You can use props when passing data from parent to child, and pass callback functions as props when passing data from child to parent to update the parent's state.
+
+```JavaScript
+<AddNumberRoot
+  onClick={function (size) {
+    this.setState({ number: this.state.number + size });
+  }.bind(this)}
+></AddNumberRoot>
+```
+
+--> In the AddNumberRoot component, we are passing a function through the onClick prop. The function takes a parameter named size and its job is to increment the current state of number by size.
+
+```JavaScript
+<AddNumber
+  onClick={function (size) {
+    // alert("size : " + size); //->test
+    this.props.onClick(size);
+  }.bind(this)}
+></AddNumber>
+```
+
+--> The AddNumber component is also passing a function through the onClick prop. This function is responsible for taking a size and passing that size to the parent component.
+
+```JavaScript
+<input
+  type="button"
+  value="+"
+  onClick={function () {
+    this.props.onClick(this.state.size);
+  }.bind(this)}
+></input>
+
+<input
+  type="text"
+  value={this.state.size}
+  onChange={function (e) {
+    this.setState({ size: Number(e.target.value) });
+  }.bind(this)}
+></input>
+```
+
+--> Inside the AddNumber component, we're using the input element to set and pass values: when the + button is pressed, we call this.props.onClick(this.state.size) to pass the size value to the parent component, and we manipulate the size value through the input element.
+
+\*\*\* A structure that interacts between the AddNumberRoot and the AddNumber component, and passes state within the AddNumber component to the parent component. This allows you to implement a data flow where data is passed from parent to child, and child to parent.
+
+---
+
+## react component state connect without redux
