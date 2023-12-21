@@ -95,3 +95,9 @@ As applications become more complex, it becomes more difficult to construct them
 --> Inside the AddNumber component, we're using the input element to set and pass values: when the + button is pressed, we call this.props.onClick(this.state.size) to pass the size value to the parent component, and we manipulate the size value through the input element.
 
 \*\*\* A structure that interacts between the AddNumberRoot and the AddNumber component, and passes state within the AddNumber component to the parent component. This allows you to implement a data flow where data is passed from parent to child, and child to parent.
+
+--> If application is very deep, or has a lot of components, this is absolutely not efficient.
+
+---
+
+## Add Redux
