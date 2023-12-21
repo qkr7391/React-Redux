@@ -349,3 +349,58 @@ export default class DisplayNumberRoot extends Component {
 	}
 }
 ```
+
+---
+
+## React-Redux
+
+- Why need React-Redux ?
+
+* Introducing redux to traditional React led to unexpectedly long and complex code, including creating container components and modifying presentation components.
+
+* If we wanted to add unit="kg" to DisplayNumberRoot, we'd have to make new changes to both the container component and the presentation component, adding complexity and hassle.
+
+* This is where React-Redux comes in.
+
+'npm i react-redux'
+
+### connect & provider
+
+- connect
+
+* In DisplayNumberRoot, you can use the function { connect } function in DisplayNumberRoot to run the existing code.
+
+The connect function is responsible for connecting your React component to the Redux store. It associates an existing React component with the state or dispatch of Redux, mapping the state of the Redux store to the props of that component.
+
+connect is used as a Higher Order Component (HOC), taking an existing component and returning a new component.
+
+[DisplayNumberRoot.jsx]
+
+```JavaScript
+import DisplayNumber from "../components/DisplayNumber";
+import { connect } from "react-redux";
+
+export default connect()(DisplayNumber);
+
+```
+
+[index.js]
+
+```JavaScript
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+import { Provider } from "react-redux";
+import store from "./store";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+	<React.StrictMode>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</React.StrictMode>
+);
+```
