@@ -191,7 +191,7 @@ render() {
 
 ---
 
-## Removing Redux-dependent features from React components
+## Removing Redux-dependent features from React components 01 AddNumber
 
 \*\* Previous - React only
 
