@@ -296,4 +296,56 @@ export default class extends Component {
 
 ---
 
-##
+## Removing Redux-dependent features from React components 02 DisplayNumber
+
+```JavaScript
+import DisplayNumber from "../components/DisplayNumber";
+import React, { Component } from "react";
+import store from "../store";
+
+export default class extends Component {
+	state = { number: store.getState().number };
+	constructor(props) {
+		super(props);
+		store.subscribe(
+			function () {
+				this.setState({ number: store.getState().number });
+			}.bind(this)
+		);
+	}
+	render() {
+		return <DisplayNumber number={this.state.number}></DisplayNumber>;
+	}
+}
+```
+
+```JavaScript
+import React, { Component } from "react";
+
+export default class DisplayNumber extends Component {
+	render() {
+		return (
+			<div>
+				<h1>Display number</h1>
+				<input type="text" value={this.props.number} readOnly></input>
+			</div>
+		);
+	}
+}
+```
+
+```JavaScript
+import React, { Component } from "react";
+import DisplayNumber from "../containers/DisplayNumber";
+
+export default class DisplayNumberRoot extends Component {
+	render() {
+		return (
+			<div>
+				<h1>Display Number Root</h1>
+				<DisplayNumber number={this.props.number}></DisplayNumber>
+			</div>
+		);
+	}
+}
+```
