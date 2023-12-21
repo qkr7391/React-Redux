@@ -435,3 +435,49 @@ const mapStateToProps = (state, ownProps) => {
 ```
 
 --> In the code above, mapStateToProps maps the user and cart states of the Redux store to props in the corresponding component, and at the same time receives the itemId passed to ownProps as a prop. This mapped data can be accessed in the corresponding component as this.props.userName, this.props.itemCount, this.props.idFromProps, etc.
+
+---
+
+## mapDispatchToProps
+
+- mapDispatchToProps is a function that maps Redux's dispatch function to the props of a React component. This function is used as the second argument to the connect function.
+
+- Redux's dispatch function is responsible for firing actions. This allows you to dispatch actions to change the state of the Redux store. mapDispatchToProps allows you to dispatch actions from your component.
+
+- The mapDispatchToProps function can be written in two forms.
+
+1. Object form:
+
+- This form returns an object containing specific action constructor functions. This returned object is then passed to the component's props. The connect function automatically binds these action constructor functions with dispatch, making them ready for use in the component.
+
+ex))
+
+```JavaScript
+import { increment, decrement } from './actions';
+
+const mapDispatchToProps = {
+  onIncrement: increment,
+  onDecrement: decrement
+};
+
+```
+
+2. Function form:
+
+- This form returns a function that maps the dispatch function directly to the component's props. You then use the dispatch function to fire an action.
+
+ex))
+
+```JavaScript
+import { increment, decrement } from './actions';
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onIncrement: () => dispatch(increment()),
+    onDecrement: () => dispatch(decrement())
+  };
+};
+
+```
+
+> In both forms, they are mapped to props in the component via the connect function, and the component can call actions to change the state of the Redux store, such as this.props.onIncrement() or this.props.onDecrement().
