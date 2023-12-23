@@ -34,3 +34,9 @@ Using:
 
 - React
 - Redux
+
+Using React-Redux to implement a simple feature where adding a number shows the number added
+
+![Alt text](<Screenshot 2023-12-23 at 11.46.57 AM.png>)
+
+Youtube: https://youtu.be/QUI53E7OmKg
