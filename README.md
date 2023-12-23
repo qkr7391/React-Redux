@@ -27,6 +27,12 @@ Using:
 - JavaScript
 - HTML
 
+Implementing a simple way to add new items, update and clear all items using React
+
+<img width="276" alt="Screenshot 2023-12-13 at 4 28 13 PM" src="https://github.com/qkr7391/ReactRedux/assets/63420534/0c93d92c-690c-469f-b7e4-2c6a3a859724">
+
+Youtube: https://youtu.be/syMxWWc_HpQ
+
 # 3. Simple React-Redux
 
 ---
