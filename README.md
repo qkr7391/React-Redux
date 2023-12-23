@@ -12,7 +12,6 @@ Use Redux to create a simple webpage that shows the contents of each piece of co
 
 <img width="570" alt="Screenshot 2023-11-27 at 2 51 31 PM" src="https://github.com/qkr7391/ReactRedux/assets/63420534/770808c2-6183-4894-b2de-3995deeb53a8">
 
-
 Youtube: https://youtu.be/rp818HjNMuw
 
 ---
