@@ -32,6 +32,8 @@ Implementing a simple way to add new items, update and clear all items using Rea
 
 Youtube: https://youtu.be/syMxWWc_HpQ
 
+[React New Version - 2022]
+
 # 3. Simple React-Redux
 
 ---
