@@ -16,7 +16,7 @@ Youtube: https://youtu.be/rp818HjNMuw
 
 ---
 
-# 2. Simple React
+# 2-1. Simple React - Old version
 
 ---
 
@@ -32,7 +32,16 @@ Implementing a simple way to add new items, update and clear all items using Rea
 
 Youtube: https://youtu.be/syMxWWc_HpQ
 
-[React New Version - 2022]
+---
+
+# 2-2. Simple React - New version
+
+Using:
+
+- npx create-react-app my-app
+- node.js
+
+---
 
 # 3. Simple React-Redux
 
@@ -46,7 +55,5 @@ Using:
 Using React-Redux to implement a simple feature where adding a number shows the number added
 
 <img width="1220" alt="Screenshot 2023-12-23 at 11 46 57 AM" src="https://github.com/qkr7391/ReactRedux/assets/63420534/7c38dc64-5c1a-4247-b9ca-bbaedfc0f293">
-
-
 
 Youtube: https://youtu.be/QUI53E7OmKg
