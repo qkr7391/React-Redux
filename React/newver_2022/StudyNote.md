@@ -31,8 +31,8 @@ Using [npm start] to run the code.
 
 - An application run with [npm start] is a development application. It is good for development, but it is not suitable for use in a real service because it is large and contains such as unnecessary messages.
 
-- If so, can you create an efficient application for your service?
+If so, can you create an efficient application for your service?
 
-- In the terminal, type [npm run build] to start the build command.
+In the terminal, type [npm run build] to start the build command.
 
-- The npm run build command is typically used before deploying a React application. When you run it, it creates a set of static files that are optimized for the production environment.
+he npm run build command is typically used before deploying a React application. When you run it, it creates a set of static files that are optimized for the production environment.
