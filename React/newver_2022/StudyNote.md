@@ -9,7 +9,9 @@ Using [npm start] to run the code.
 
 ## Edit
 
+```
 1. index.js: The index.js file is the entry point to your React application. It primarily serves the following purposes.
+```
 
 1.1 Calling ReactDOM.render(): Renders React elements to the real DOM via the React DOM library's ReactDOM.render() function.
 
