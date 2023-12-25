@@ -29,7 +29,7 @@ Using [npm start] to run the code.
 
 ## Deployment
 
-- An application run with [npm start] is a development application. It is good for development, but it is not suitable for use in a real service because it is large and contains such as unnecessary messages.
+An application run with [npm start] is a development application. It is good for development, but it is not suitable for use in a real service because it is large and contains such as unnecessary messages.
 
 If so, can you create an efficient application for your service?
 
