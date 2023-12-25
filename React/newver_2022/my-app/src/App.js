@@ -1,12 +1,17 @@
-function App() {
+function Header() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>
-					<a href="/">WEB</a>
-				</h1>
-			</header>
-			<nav>
+		<header className="App-header">
+			<h1>
+				<a href="/">WEB</a>
+			</h1>
+		</header>
+	);
+}
+
+function Nav() {
+	return (
+		<nav>
+			<ol>
 				<li>
 					<a href="/read/1">HTML</a>
 				</li>
@@ -16,11 +21,25 @@ function App() {
 				<li>
 					<a href="/read31">JavaScript</a>
 				</li>
-			</nav>
-			<article>
-				<h2>Welcom</h2>
-				Hello, WEB
-			</article>
+			</ol>
+		</nav>
+	);
+}
+
+function Article() {
+	return (
+		<article>
+			<h2>Welcom</h2>
+			Hello, WEB
+		</article>
+	);
+}
+function App() {
+	return (
+		<div className="App">
+			<Header></Header>
+			<Nav></Nav>
+			<Article></Article>
 		</div>
 	);
 }

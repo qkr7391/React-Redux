@@ -72,3 +72,64 @@ In a way, yes, but the statement might need a bit of clarification. React is a J
 These components can encapsulate various functionalities and represent specific parts of the UI. When you use React, you essentially create your own custom HTML elements or tags by defining these components. For example, you might create a Header, Button, or Card component, and then use them in your code as if they were HTML tags.
 
 So, while React itself doesn't directly create HTML tags, it provides a way to build custom components that can be used similarly to HTML tags within your application, thereby allowing you to create your own reusable, custom elements to structure your UI.
+
+**Simple webpage code for example**
+
+```JavaScript
+<div className="App">
+    <header className="App-header">
+        <h1>
+            <a href="/">WEB</a>
+        </h1>
+    </header>
+    <nav>
+        <ol>
+            <li>
+                <a href="/read/1">HTML</a>
+            </li>
+            <li>
+                <a href="/read/2">CSS</a>
+            </li>
+            <li>
+                <a href="/read31">JavaScript</a>
+            </li>
+        </ol>
+    </nav>
+    <article>
+        <h2>Welcom</h2>
+        Hello, WEB
+    </article>
+</div>
+```
+
+This code has some HTML tags for organizing web pages. As you can see, it is not too long because it is simple code for example. By the wat, what if there are thousond of code lines for complicate web page? what about we need more pages? If so, the code will become more complex and unreadable.
+
+_What do we need to do?_
+
+> Create a custom tag, also known as **component**.
+
+In React, a component is a fundamental building block used to create user interfaces. Components are reusable and self-contained pieces of code that encapsulate a part of the UI's functionality and appearance.
+
+1. Functional Components: These are JavaScript functions that accept properties (props) as arguments and return React elements that describe the UI. They are typically used for simpler components.
+
+2. Class Components: These are ES6 classes that extend the React.Component class. They include a render() method that returns the UI description. Class components have additional features like local state and lifecycle methods.
+
+Components allow developers to create a modular and reusable UI. They can be composed together to form more complex UI structures. Each component can manage its own state (in the case of class components) or receive data through props to render UI based on that data.
+
+```JavaScript
+function Header() {
+	return (
+		<header className="App-header">
+			<h1>
+				<a href="/">WEB</a>
+			</h1>
+		</header>
+	);
+}
+    ...
+
+function App() {
+	return (
+			<Header></Header>
+    ...
+```
