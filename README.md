@@ -45,6 +45,8 @@ Using:
 
 Using React-Redux to implement a simple feature where adding a number shows the number added
 
-![Alt text](<Screenshot 2023-12-23 at 11.46.57 AM.png>)
+<img width="1220" alt="Screenshot 2023-12-23 at 11 46 57 AM" src="https://github.com/qkr7391/ReactRedux/assets/63420534/7c38dc64-5c1a-4247-b9ca-bbaedfc0f293">
+
+
 
 Youtube: https://youtu.be/QUI53E7OmKg
