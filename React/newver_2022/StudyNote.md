@@ -133,3 +133,83 @@ function App() {
 			<Header></Header>
     ...
 ```
+
+---
+
+# props
+
+[example code]
+
+```javascript
+<Header></Header>
+<Nav></Nav>
+
+<img src="image.jpg" width="100" height="100">
+```
+
+Image tags can have input values thanks to "attributes" like src, width, and height.
+But what if components also have properties?
+
+- What is a prop in React?
+  -> In React, "props" represent properties (data) that are passed from the parent component. They are used to pass data from the parent component to the child component. These data are read-only in the child component and cannot be changed.
+
+- Using props to pass data between components allows you to reuse components and create flexible structures.
+
+```javascript
+function Article(props) {
+	return (
+		<article>
+			<h2>{props.title}</h2>
+			{props.body}
+		</article>
+	);
+}
+function App() {
+	return (
+		<div className="App">
+			...
+			<Article title="Welcom" body="Hello,Web"></Article>
+		</div>
+	);
+}
+```
+
+- Create a separate array called topics and send it to the props and receive it, creating a list of them one by one.
+
+```javascript
+function App() {
+	const topics = [
+		{ id: 1, title: "html", body: "html is ..." },
+		{ id: 2, title: "CSS", body: "CSS is ..." },
+		{ id: 3, title: "JavaScript", body: "JavaScript is ..." },
+	];
+	return (
+		<div className="App">
+			...
+			<Nav topics={topics}></Nav>
+			...
+		</div>
+	);
+}
+```
+
+```javascript
+function Nav(props) {
+	const lis = [];
+	for (let i = 0; i < props.topics.length; i++) {
+		let t = props.topics[i];
+		lis.push(
+			<li key={t.id}>
+				<a href={"/read" + t.id}>{t.title}</a>
+			</li>
+		);
+	}
+	return (
+		<nav>
+			<ol>{lis}</ol>
+		</nav>
+	);
+}
+```
+
+- used a props to output different results depending on the value we send.
