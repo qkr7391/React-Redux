@@ -213,3 +213,109 @@ function Nav(props) {
 ```
 
 - used a props to output different results depending on the value we send.
+
+---
+
+# event
+
+[example code]
+
+```JavaScript
+<input type="button" onclick="alert('hi')">
+```
+
+The **onclick** function allows the user to get a warning when a button is clicked.
+
+What if 'component' has these function that allows the user to get more works?
+-> **event**
+
+[example 1]
+
+1. Implemented new function functionality in the <Header> component.
+
+```JavaScript
+<Header
+    title="WEB"
+    onChangeMode={()=> {
+        alert("Header");
+    }}
+></Header>
+```
+
+2. <Header> component when an event called 'click' occurs,
+
+1) prohibit the page from reloading, and
+2) call the function pointed to by 'onChangeMode' passed as a prop
+   passed as a prop.
+
+```JavaScript
+function Header(props) {
+	return (
+		<header className="App-header">
+			<h1>
+				<a
+					href="/"
+					onClick={(event) => {
+						event.preventDefault(); //prevent reload
+						props.onChangeMode();
+					}}
+				>
+					{props.title}
+				</a>
+			</h1>
+		</header>
+	);
+}
+```
+
+[example 2]
+
+- Want to display the corresponding id value in an alert when the content inside the <Nav> is clicked.
+
+1. Implement the function you want to implement inside the <Nav> that "fires an alert with the id value".
+
+```JavaScript
+<Nav
+    topics={topics}
+    onChangeMode={(id) => {
+        alert(id);
+    }}
+></Nav>
+```
+
+2. When the 'click' event is fired on the <Nav> component,
+
+1) prohibit the page from reloading, and
+2) sends the id value of the clicked list to the onChangeMode passed to the props in the
+   function that sends the id of the clicked list to the onChangeMode passed to the proxy.
+
+- How do I get the id attribute of an <a> tag inside an Event function?
+  -> Use the event object, and get the id value of the event object's target (the tag that triggered the event === <a>).
+
+```JavaScript
+function Nav(props) {
+	const lis = [];
+	for (let i = 0; i < props.topics.length; i++) {
+		let t = props.topics[i];
+		lis.push(
+			<li key={t.id}>
+				<a
+					id={t.id}
+					href={"/read" + t.id}
+					onClick={(event) => {
+						event.preventDefault();
+						props.onChangeMode(event.target.id);
+					}}
+				>
+					{t.title}
+				</a>
+			</li>
+		);
+	}
+	return (
+		<nav>
+			<ol>{lis}</ol>
+		</nav>
+	);
+}
+```
