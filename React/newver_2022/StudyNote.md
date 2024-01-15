@@ -319,3 +319,86 @@ function Nav(props) {
 	);
 }
 ```
+
+---
+
+# state
+
+In React, state is a JavaScript object that is used to store and manage component-specific data. It represents the dynamic aspects of a component that can change over time. State allows React components to keep track of changes and update the user interface accordingly.
+
+![Alt text](<IMG_A8E51F9C1B30-1 copy.jpeg>)
+
+React components have inputs and outputs. The input is the **props**, and the output is the **return**, which is the result of running a function on the props. This return value is the new UI.
+
+There is one other piece of data in the process, which is the **state**.
+Both the props and the state will output a new UI when their values change.
+
+Difference between props and states:
+Props are data for outsiders using the component that is stored in the
+State is data for the insiders who create the component.
+
+[practice1]
+-> Make it so that clicking on the Header displays the welcome page, and clicking on the topics in the Nav displays read page.
+
+```JavaScript
+import { useState } from "react";
+
+const [mode, setMode] = useState("WELCOME");
+
+if (mode === "WELCOME") {
+		content = <Article title="Welcome" body="Hello, Web"></Article>;
+	} else if (mode === "READ") {
+		content = <Article title="Read" body="Hello, Read"></Article>;
+	}
+
+return(
+...
+{content}{" "}
+...
+)
+```
+
+[practice2]
+-> clicking on the topics in the Nav displays their respective contents.
+
+```JavaScript
+const [id, setId] = useState(null);
+
+function Nav(props) {
+    ...
+    <a
+        id={t.id}
+        href={"/read" + t.id}
+        onClick={(event) => {
+            event.preventDefault();
+            props.onChangeMode(Number(event.target.id));
+        }}
+    >
+        {t.title}
+    </a>
+    ...
+}
+
+else if (mode === "READ") {
+    let title,
+        body = null;
+    for (let i = 0; i < topics.length; i++) {
+        if (topics[i].id === id) {
+            title = topics[i].title;
+            body = topics[i].body;
+        }
+    }
+    content = <Article title={title} body={body}></Article>;
+}
+
+return(
+    <Nav
+        topics={topics}
+        onChangeMode={(_id) => {
+            setMode("READ");
+            setId(_id);
+        }}
+    ></Nav>
+)
+
+```
