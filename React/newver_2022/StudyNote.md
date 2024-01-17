@@ -402,3 +402,119 @@ return(
 )
 
 ```
+
+---
+
+[Create/Read/Update/Delete]
+
+# Create
+
+- Create a Create button and implement a form that allows you to add a new item when the button is clicked.
+  Add the contents of the title and description of the new item to create it, and implement the display of the contents on the screen.
+
+```JavaScript
+function Create(props) {
+	return (
+		<article>
+			<h2>Create</h2>
+			<form
+				onSubmit={(event) => {
+					event.preventDefault();
+					const title = event.target.title.value;
+					const body = event.target.body.value;
+					props.onCreate(title, body);
+				}}
+			>
+				<p>
+					<input type="text" name="title" placeholder="title"></input>
+				</p>
+				<p>
+					<textarea name="body" placeholder="description"></textarea>
+				</p>
+				<p>
+					<input type="submit" value="Create"></input>
+				</p>
+			</form>
+		</article>
+	);
+}
+
+function App(){
+	...
+const [nextId, setNextId] = useState();
+const [topics, setTopics] = useState([
+	{ id: 1, title: "html", body: "html is ..." },
+	{ id: 2, title: "CSS", body: "CSS is ..." },
+	{ id: 3, title: "JavaScript", body: "JavaScript is ..." },
+]);
+...
+else if (mode === "CREATE") {
+	content = (
+		<Create
+			onCreate={(_title, _body) => {
+				const newTopic = { id: nextId, title: _title, body: _body };
+				const newTopics = [...topics]; //make a copy of origin
+				newTopics.push(newTopic); //add new to copy of origin
+				setTopics(newTopics); //set copy as a new one
+			}}
+		></Create>
+	);
+}
+
+return(
+	...
+	<a
+		href="/create"
+		onClick={(event) => {
+			event.preventDefault();
+			setMode("CREATE");
+		}}
+	>
+		Create
+	</a>
+	...
+)
+}
+```
+
+- const [value, setValue] = useState(PRIMITIVE);
+  [string, number, binint,boolean, undefined, symbol, null]
+  -> setValue(newValue)
+
+- const [valu, setValue] = useState(Object);
+  [object, array]
+  -> newValue = {...value} // create copy of origin
+  -> add or edit newValue
+  -> setValue(newValue) // setValue with copied value
+
+[ex]
+const[value, setValue] = useState(1);
+setValue(2);
+-> no problem
+
+const[value, setValue] = useState([1]);
+value.push(2);
+setValue(value);
+-> **problem**
+The first value and the next value are recognized as the same value, so no change is made.
+
+newValue = [...value];
+newValue.push(2);
+setValue(newValue);
+-> no problem
+
+- After creating, display the content and set the username and next username.
+
+```JavaScript
+else if (mode === "CREATE") {
+	content = (
+		<Create
+		...
+				setMode("READ");
+				setId(nextId);
+				setNextId(nextId + 1);
+			}}
+		></Create>
+	);
+}
+```
