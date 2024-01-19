@@ -518,3 +518,106 @@ else if (mode === "CREATE") {
 	);
 }
 ```
+
+---
+
+# Update
+
+Update = Create + Read
+
+- The Update function should modify the existing content and replace it with new information.
+  It should also only be implemented when viewing an existing topic entry, so it should not appear on the welcome page.
+
+When in 'READ' mode, create a button to implement the Update functionality and configure the <Update> component.
+
+The Update function is similar to Create.
+It loads the existing content, takes the user's input, modifies the content, and registers the modified content as new.
+
+```JavaScript
+function Update(props) {
+	const [title, setTitle] = useState(props.title);
+	const [body, setBody] = useState(props.body);
+	return (
+		<article>
+			<h2>Update</h2>
+			<form
+				onSubmit={(event) => {
+					event.preventDefault();
+					const title = event.target.title.value;
+					const body = event.target.body.value;
+					props.onUpdate(title, body);
+				}}
+			>
+				<p>
+					<input
+						type="text"
+						name="title"
+						placeholder="title"
+						value={title}
+						onChange={(event) => {
+							setTitle(event.target.value);
+						}}
+					></input>
+				</p>
+				<p>
+					<textarea
+						name="body"
+						placeholder="description"
+						value={body}
+						onChange={(event) => {
+							setBody(event.target.value);
+						}}
+					></textarea>
+				</p>
+				<p>
+					<input type="submit" value="Update"></input>
+				</p>
+			</form>
+		</article>
+	);
+}
+
+function App(){
+	...
+	let contextControl = null;
+	...
+	else if (mode === "UPDATE") {
+		let title,
+			body = null;
+		for (let i = 0; i < topics.length; i++) {
+			if (topics[i].id === id) {
+				title = topics[i].title;
+				body = topics[i].body;
+			}
+		}
+		content = (
+			<Update
+				title={title}
+				body={body}
+				onUpdate={(_title, _body) => {
+					const updatedTopic = { id: id, title: _title, body: _body };
+					const newTopics = [...topics];
+					for (let i = 0; i < newTopics.length; i++) {
+						if (newTopics[i].id === id) {
+							newTopics[i] = updatedTopic;
+							break;
+						}
+					}
+					setTopics(newTopics);
+					setMode("READ");
+				}}
+			></Update>
+		);
+	}
+
+	return(
+		<ul>
+			...
+			{contextControl}
+		</ul>
+	)
+
+}
+```
+
+Inside the App function, in the else if(mode === "UPDATE") section, we need to get the title and body values of the clicked topic and send them to the <Update> component, which indicates the content of the received values, and receives the user's input to change the content.
