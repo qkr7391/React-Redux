@@ -621,3 +621,39 @@ function App(){
 ```
 
 Inside the App function, in the else if(mode === "UPDATE") section, we need to get the title and body values of the clicked topic and send them to the <Update> component, which indicates the content of the received values, and receives the user's input to change the content.
+
+---
+
+# Delete
+
+Delete can be implemented using a button because it deletes the content of a link without moving it.
+
+When the button is clicked, topics that do not have the same ID value as the topic in question are put into an empty array and deleted by setting the new array as the state value.
+
+```JavaScript
+function App(){
+	...
+	else if (mode === "READ") {
+...
+contextControl = (
+	<>
+		<li>
+			<input
+				type="button"
+				value="Delete"
+				onClick={() => {
+					const newTopics = [];
+					for (let i = 0; i < topics.length; i++) {
+						if (topics[i].id !== id) {
+							newTopics.push(topics[i]);
+						}
+					}
+					setTopics(newTopics);
+					setMode("WELCOME");
+				}}
+			/>
+		</li>
+	</>
+	);
+}}
+```
